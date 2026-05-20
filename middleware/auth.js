@@ -64,4 +64,26 @@ const optionalToken = async (req, res, next) => {
 // Add more role-based middleware here per project:
 // const verifyAdmin = (req, res, next) => { ... }
 
-module.exports = { verifyToken, optionalToken }
+// must run after verifyToken.
+// Must run after blog is loaded
+const verifyBlogAuthor=(req,res,next)=>{
+  if(req.blog.authorId!==req.user.id){
+    return res.status(403).json({
+      message:"You don't own this post."
+    })
+  }
+  next()
+}
+
+const verifyCommentAuthor=(req,res,next)=>{
+  if(req.comment.authorId!==req.user.id){
+    return res.staus(403).json({
+      message:"You don't own this comment."
+    })
+  }
+  next()
+}
+
+module.exports = { verifyToken, optionalToken ,
+  verifyBlogAuthor,verifyCommentAuthor
+}
