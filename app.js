@@ -7,6 +7,7 @@ const authRouter = require('./routes/auth')
 // import your project routers below:
 // const articlesRouter = require('./routes/articles')
 const blogsRouter=require("./routes/blogs")
+const myBlogsRouter=require("./routes/myBlogs")
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -32,6 +33,7 @@ app.use(express.json())
 app.use('/auth', authRouter)
 // app.use('/your-resource', yourRouter)
 app.use("/blogs",blogsRouter)
+app.use("/myBlogs",myBlogsRouter)
 
 // ── 404 ───────────────────────────────────────────────
 app.use((_req, res) => {
