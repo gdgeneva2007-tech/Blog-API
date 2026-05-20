@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Minimal User model
+// Add your project fields below the required ones
+model User {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String
+  // add project-specific fields here:
+  // isAuthor  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
