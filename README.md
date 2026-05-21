@@ -8,6 +8,7 @@ POST /blogs
 PUT /blogs/:blogId
 DELETE /blogs/:blogId
 PATCH /blogs/:blogId/toggle-publish
+GET /myBlogs
 
 Comments Routes:
 GET /blogs/:blogId/comments

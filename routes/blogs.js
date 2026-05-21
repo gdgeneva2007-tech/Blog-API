@@ -25,7 +25,7 @@ const {
 
 router.get("/",getAllPublishedBlogs)
 router.post("/",verifyToken,blogValidateRules,createBlog)
-router.get("/:blogId",getBlogDetail)
+router.get("/:blogId",optionalToken,getBlogDetail)
 router.put("/:blogId",verifyToken,loadBlog,verifyBlogAuthor,blogValidateRules,editBlog)
 router.delete("/:blogId",verifyToken,loadBlog,verifyBlogAuthor,deleteBlog)
 router.patch("/:blogId/toggle-publish",verifyToken,loadBlog,verifyBlogAuthor,togglePublishBlog)

@@ -53,7 +53,8 @@ async function getBlogDetail(id){
           createdAt:true,
           author:{select:{firstName:true,lastName:true}}
         }
-      }
+      },
+      _count:{select:{comments:true}}
     }
   })
 }
