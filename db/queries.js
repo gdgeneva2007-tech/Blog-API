@@ -27,7 +27,8 @@ async function getAllPublishedBlogs(){
     include:{
       author:{select:{firstName:true,lastName:true}},
       _count:{select:{comments:true}}
-    }
+    },
+    orderBy:{createdAt:"desc"}
   })
 }
 
@@ -90,9 +91,9 @@ async function createComment(data){
   return await prisma.comment.create({data})
 }
 
-async function editComment(id,text){
+async function editComment(id,data){
   return await prisma.comment.update({
-    where:{id},data:{text}
+    where:{id},data
   })
 }
 

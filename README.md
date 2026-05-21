@@ -13,5 +13,6 @@ GET /myBlogs
 Comments Routes:
 GET /blogs/:blogId/comments
 POST /blogs/:blogId/comments
+GET /blogs/:blogId/comments/:commentId
 PUT /blogs/:blogId/comments/:commentId
 DELETE /blogs/:blogId/comments/:commentId

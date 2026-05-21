@@ -21,6 +21,7 @@ const {
     loadComment,
     deleteComment,
     editComment,
+    getCommentById,
 }=require("../controllers/commentsController")
 
 router.get("/",getAllPublishedBlogs)
@@ -32,6 +33,7 @@ router.patch("/:blogId/toggle-publish",verifyToken,loadBlog,verifyBlogAuthor,tog
 
 router.get("/:blogId/comments",getCommentsByBlogId)
 router.post("/:blogId/comments",verifyToken,commentValidateRules,createComment)
+router.get("/:blogId/comments/:commentId",verifyToken,getCommentById)
 router.put("/:blogId/comments/:commentId",verifyToken,loadComment,verifyCommentAuthor,commentValidateRules,editComment)
 router.delete("/:blogId/comments/:commentId",verifyToken,loadComment,deleteComment)
 

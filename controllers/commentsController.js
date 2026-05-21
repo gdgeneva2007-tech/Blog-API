@@ -68,7 +68,23 @@ const editComment=async (req,res,next)=>{
         if(!errors.isEmpty()){
             return res.status(400).json({errors:errors.array()})
         }
-        const comment=await db.editComment(req.comment.id,req.body.text)
+        const data={text:req.body.text}
+        const comment=await db.editComment(req.comment.id,data)
+        res.json({comment})
+    }catch(err){
+        next(err)
+    }
+}
+
+const getCommentById=async(req,res,next)=>{
+    try{
+        const commentId=Number(req.params.commentId)
+        if(isNaN(commentId))return res.status(404).json({message:"Comment not found."})
+        const comment=await db.getCommentById(commentId)
+        // must run after the user is loaded. verifyToken
+        if(!comment || comment.authorId!==req.user.id){
+            return res.status(404).json({message:"Comment not found."})
+        }
         res.json({comment})
     }catch(err){
         next(err)
@@ -81,4 +97,5 @@ module.exports={
     loadComment,
     deleteComment,
     editComment,
+    getCommentById,
 }
