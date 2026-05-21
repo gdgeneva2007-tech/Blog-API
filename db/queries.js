@@ -52,6 +52,7 @@ async function getBlogDetail(id){
           id:true,
           text:true,
           createdAt:true,
+          authorId:true,
           author:{select:{firstName:true,lastName:true}}
         }
       },
