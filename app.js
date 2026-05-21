@@ -18,7 +18,8 @@ app.use(
   cors({
     origin: [
       'http://localhost:5173', // Vite default port
-      'http://localhost:3000',
+      'http://localhost:5175',
+      'http://localhost:3000', // fallback
       // add deployed frontend URL here
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
